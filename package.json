@@ -1,0 +1,54 @@
+{
+  "name": "@mlezcano1985/json-mask-values",
+  "version": "1.0.0",
+  "description": "Find keys into a JSON and mask its values.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc --project tsconfig.build.json",
+    "lint": "eslint --fix .",
+    "lint:ci": "eslint .",
+    "test": "jest",
+    "test:ci": "jest --silent --forceExit --detectOpenHandles"
+  },
+  "files": [
+    "dist/**/*",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "json",
+    "obfuscate",
+    "mask"
+  ],
+  "author": {
+    "name": "Miguel Lezcano"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlezcano1985/json-mask-values.git"
+  },
+  "readme": "https://github.com/mlezcano1985/json-mask-values#readme",
+  "homepage": "https://github.com/mlezcano1985/json-mask-values",
+  "bugs": {
+    "url": "https://github.com/mlezcano1985/json-mask-values/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
