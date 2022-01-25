@@ -1,4 +1,5 @@
 import ends from './ends';
 import portion from './portion';
+import date from './date';
 
-export { ends, portion };
+export { ends, portion, date };

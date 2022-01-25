@@ -1,6 +1,6 @@
 {
   "name": "@mlezcano1985/json-mask-values",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Find keys into a JSON and mask its values.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
