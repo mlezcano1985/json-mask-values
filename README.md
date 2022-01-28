@@ -17,9 +17,10 @@ The functions to mask json values is called _plugins_. This tools has two plugin
 
 - portion: Masks a section of the string. You must specify how many characters you want to leave visible. If the value is positive it will be to the left and if it is negative it will be to the right.
 - ends: Masks the center of the string. You must specify how many characters you want to leave visible on the right and on the left.
-- date: Masks the center of the string. You must specify how many characters you want to leave visible on the right and on the left.
+- date: Masks a date string.
+- email: Masks an email address.
 
-Both plugins using a default character to mask the string: `*`. But you can use whatever you want. See `dni` mask example.
+All plugins use the default character `*` to mask the string. But you can use whatever you want. See [How to use it?](#how-to-use-it) section.
 
 You may use custom functions to mask a string.
 
@@ -38,6 +39,7 @@ import {
   MaskKeyFn,
   portion,
   date,
+  email,
 } from '@mlezcano1985/json-mask-values';
 
 // Original JSON
@@ -49,6 +51,7 @@ const json = {
       streetNumber: '50',
     },
     birthdate: '1990-09-10',
+    email: 'test@email.com',
   },
   cardNumber: '1234567890',
   expireIn: '1/3/2024',
@@ -61,6 +64,7 @@ const keys: MaskKeyFn = {
   cardNumber: (value: string) => portion(value, -4), // Mask the cardNumber value in the JSON. The value parameter is "1234567890". Leave visible the last 4 characters.
   birthdate: (value: string) => date(value),
   expireIn: (value: string) => date(value, '#'),
+  email: (value: string) => email(value),
 };
 
 const result = maskJSON(json, keys);
@@ -78,7 +82,8 @@ Output JSON:
       "street": "This is***************",
       "streetNumber": "50"
     },
-    "birthdate": "***0-*9-*0"
+    "birthdate": "***0-*9-*0",
+    "email": "te**@e****.c**"
   },
   "cardNumber": "******7890",
   "expireIn": "1/3/###4"
@@ -88,7 +93,7 @@ Output JSON:
 Output String:
 
 ```
-{"person":{"dni":"12#####89","address":{"street":"This is***************","streetNumber":"50"},"birthdate":"***0-*9-*0"},"cardNumber":"******7890","expireIn":"1/3/###4"}
+{"person":{"dni":"12#####89","address":{"street":"This is***************","streetNumber":"50"},"birthdate":"***0-*9-*0","email":"te**@e****.c**"},"cardNumber":"******7890","expireIn":"1/3/###4"}
 ```
 
 ## Feedbacks
