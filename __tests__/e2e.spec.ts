@@ -1,4 +1,4 @@
-import { ends, maskJSON, MaskKeyFn, portion, date } from '../src';
+import { ends, maskJSON, MaskKeyFn, portion, date, email } from '../src';
 
 describe('e2e', () => {
   const json = {
@@ -9,6 +9,7 @@ describe('e2e', () => {
         streetNumber: '50',
       },
       birthdate: '1990-09-10',
+      email: 'test@email.com',
     },
     cardNumber: '1234567890',
     expireIn: '1/3/2024',
@@ -20,6 +21,7 @@ describe('e2e', () => {
     cardNumber: (value: string) => portion(value, -4),
     birthdate: (value: string) => date(value),
     expireIn: (value: string) => date(value, '#'),
+    email: (value: string) => email(value),
   };
   const result = maskJSON(json, keys);
   const expected = {
@@ -30,6 +32,7 @@ describe('e2e', () => {
         streetNumber: '50',
       },
       birthdate: '***0-*9-*0',
+      email: 'te**@e****.c**',
     },
     cardNumber: '******7890',
     expireIn: '1/3/###4',
